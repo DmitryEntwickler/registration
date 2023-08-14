@@ -13,14 +13,18 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.ColorFilter
@@ -47,6 +51,27 @@ fun RegistrationScreenComposable(
     val mAdress by mRegistrationScreenViewModel.mAdress.observeAsState()
     val mCity by mRegistrationScreenViewModel.mCity.observeAsState()
     val mEmail by mRegistrationScreenViewModel.mEmail.observeAsState()
+
+    val mOpenDialog = remember { mutableStateOf(false)  }
+    if (mOpenDialog.value) {
+        AlertDialog(
+            title = { Text(text = stringResource(id = R.string.formularErrorTitle)) },
+            text = { Text(text = stringResource(id = R.string.formularErrorMessage)) },
+            onDismissRequest = { mOpenDialog.value = false },
+            confirmButton = {
+                TextButton(onClick = { mOpenDialog.value = false })
+                {
+                    Text(text = "Ok")
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { mOpenDialog.value = false }
+                ) {
+                    Text(text = "Dismiss")
+                }
+            },
+        )
+    }
 
     Column(
         modifier = Modifier
@@ -141,7 +166,8 @@ fun RegistrationScreenComposable(
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp, vertical = 24.dp),
             onClick = {
-                mRegistrationScreenViewModel.isFormularReady()
+                if (mRegistrationScreenViewModel.isFormularReady()) mNavController.navigate("homeScreen")
+                else mOpenDialog.value = true
             }
         ) {
             Row(horizontalArrangement = Arrangement.Center) {

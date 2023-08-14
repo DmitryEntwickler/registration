@@ -9,5 +9,7 @@
     <string name="topAppBarText">Registrierung</string>
     <string name="konto">Ihre Daten</string>
     <string name="welcome">Willkommen in der App</string>
+    <string name="formularErrorMessage">Bitte vervollständigen Sie die Daten</string>
+    <string name="formularErrorTitle">Achtung</string>
 
 </resources>
