@@ -6,5 +6,6 @@
     <string name="city">Wohnort</string>
     <string name="email">Email</string>
     <string name="registrate">Registrieren</string>
+    <string name="topAppBarText">Registrierung</string>
 
 </resources>
