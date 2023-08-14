@@ -19,11 +19,11 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -145,7 +145,12 @@ fun RegistrationScreenComposable(
             }
         ) {
             Row(horizontalArrangement = Arrangement.Center) {
-                Image(imageVector = Icons.Default.Person, contentDescription = "")
+                Image(
+                    imageVector = Icons.Default.Person,
+                    contentDescription = "",
+                    colorFilter = ColorFilter.tint(MaterialTheme.colorScheme.onPrimary),
+                    modifier = Modifier.padding(end = 8.dp)
+                )
                 Text(
                     text = stringResource(id = R.string.registrate),
                     style = MaterialTheme.typography.titleMedium
@@ -153,6 +158,4 @@ fun RegistrationScreenComposable(
             }
         }
     }
-
-
 }

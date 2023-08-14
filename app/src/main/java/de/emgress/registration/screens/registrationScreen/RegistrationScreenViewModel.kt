@@ -25,11 +25,9 @@ class RegistrationScreenViewModel: ViewModel() {
             mCity.value.isNullOrEmpty() ||
             mEmail.value.isNullOrEmpty()
         ) {
-            println("-> not ok")
             return false
         }
         else {
-            println("-> ok")
             saveNewUser()
             return true
         }

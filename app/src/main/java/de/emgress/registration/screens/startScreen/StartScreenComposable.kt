@@ -26,7 +26,7 @@ fun StartScreenComposable(
     val mListOfUsers by mStartScreenViewModel.mListOfUsers.observeAsState()
 
     LaunchedEffect(mListOfUsers) {
-        delay(2000)
+        delay(1000)
         if (mListOfUsers.isNullOrEmpty()) {
            mNavController.navigate("registrationScreen")
         }
