@@ -5,6 +5,8 @@ import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavType
@@ -22,9 +24,10 @@ import de.emgress.registration.screens.registrationScreen.RegistrationScreenComp
 fun NavHostComposable(){
 
     val mNavController = rememberNavController()
+    val mIsTopAppBarVisible = remember { mutableStateOf(true) }
 
     Scaffold(
-        topBar = { TopAppBarComposable()},
+        topBar = { if (mIsTopAppBarVisible.value)TopAppBarComposable() },
         bottomBar = { BottomNavigationComposable(mNavController = mNavController)}
     ) { innerPaddingValues ->
         NavHost(
@@ -32,15 +35,23 @@ fun NavHostComposable(){
             startDestination = "registrationScreen",
             modifier = Modifier.padding(innerPaddingValues)
         ){
-            composable("registrationScreen") { RegistrationScreenComposable() }
-            composable("myDataScreen") { MyDataScreenComposable() }
-            /*
+            composable("registrationScreen") {
+                mIsTopAppBarVisible.value = true
+                RegistrationScreenComposable()
+            }
+            composable("myDataScreen") {
+                mIsTopAppBarVisible.value = false
+                MyDataScreenComposable()
+            }
+
+        }
+    }
+}
+
+/*
             composable(
                 route = "productDetailScreen/{id}",
                 arguments = listOf(navArgument("id") { type = NavType.IntType })
             ) { ProductDetailComposable() }
 
              */
-        }
-    }
-}
