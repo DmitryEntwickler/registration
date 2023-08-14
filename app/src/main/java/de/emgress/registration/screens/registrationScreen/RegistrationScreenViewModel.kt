@@ -34,7 +34,6 @@ class RegistrationScreenViewModel: ViewModel() {
     }
 
     private fun saveNewUser() {
-        println("-> saving")
         viewModelScope.launch {
             mDataBaseDBRepository.saveNewUser(
                 UserEntity(
@@ -46,6 +45,5 @@ class RegistrationScreenViewModel: ViewModel() {
                 )
             )
         }
-        println("-> save ok")
     }
 }
