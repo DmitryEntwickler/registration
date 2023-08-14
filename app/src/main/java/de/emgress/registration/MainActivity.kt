@@ -6,12 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
 import de.emgress.registration.navigation.NavHostComposable
-import de.emgress.registration.screens.registrationScreen.RegistrationScreenComposable
 import de.emgress.registration.ui.theme.RegistrationTheme
 
 class MainActivity : ComponentActivity() {
