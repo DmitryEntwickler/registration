@@ -7,7 +7,7 @@
     <string name="email">Email</string>
     <string name="registrate">Registrieren</string>
     <string name="topAppBarText">Registrierung</string>
-    <string name="konto">Ihre Daten</string>
+    <string name="kontotTitle">Ihre Daten</string>
     <string name="welcome">Willkommen in der App</string>
     <string name="formularErrorMessage">Bitte vervollständigen Sie die Daten</string>
     <string name="formularErrorTitle">Achtung</string>

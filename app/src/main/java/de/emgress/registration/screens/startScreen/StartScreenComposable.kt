@@ -31,7 +31,7 @@ fun StartScreenComposable(
            mNavController.navigate("registrationScreen")
         }
         else {
-           mNavController.navigate("homeScreen")
+           mNavController.navigate("myDataScreen")
         }
 
     }

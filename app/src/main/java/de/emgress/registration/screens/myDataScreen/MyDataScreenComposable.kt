@@ -27,7 +27,7 @@ fun MyDataScreenComposable(mMyDataScreenViewModel: MyDataScreenViewModel = viewM
     Column(modifier = Modifier.fillMaxSize()) {
 
         Text(
-            text = stringResource(id = R.string.konto),
+            text = stringResource(id = R.string.kontotTitle),
             style = MaterialTheme.typography.titleMedium,
             modifier = Modifier.fillMaxWidth(),
             textAlign = TextAlign.Center
