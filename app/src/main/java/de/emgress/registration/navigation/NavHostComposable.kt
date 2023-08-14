@@ -14,6 +14,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import de.emgress.registration.R
 import de.emgress.registration.commonComposables.TopAppBarComposable
+import de.emgress.registration.screens.myDataScreen.MyDataScreenComposable
 import de.emgress.registration.screens.registrationScreen.RegistrationScreenComposable
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -23,7 +24,8 @@ fun NavHostComposable(){
     val mNavController = rememberNavController()
 
     Scaffold(
-        topBar = { TopAppBarComposable()}
+        topBar = { TopAppBarComposable()},
+        bottomBar = { BottomNavigationComposable(mNavController = mNavController)}
     ) { innerPaddingValues ->
         NavHost(
             navController = mNavController,
@@ -31,6 +33,7 @@ fun NavHostComposable(){
             modifier = Modifier.padding(innerPaddingValues)
         ){
             composable("registrationScreen") { RegistrationScreenComposable() }
+            composable("myDataScreen") { MyDataScreenComposable() }
             /*
             composable(
                 route = "productDetailScreen/{id}",

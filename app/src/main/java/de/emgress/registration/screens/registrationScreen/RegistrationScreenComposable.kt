@@ -7,8 +7,10 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
@@ -40,10 +42,11 @@ fun RegistrationScreenComposable(mRegistrationScreenViewModel: RegistrationScree
     val mCity by mRegistrationScreenViewModel.mCity.observeAsState()
     val mEmail by mRegistrationScreenViewModel.mEmail.observeAsState()
 
+    val mScrollState = rememberScrollState()
 
     Column(
-        modifier = Modifier.fillMaxSize(),
-        verticalArrangement = Arrangement.SpaceBetween
+        modifier = Modifier.fillMaxSize().verticalScroll(mScrollState),
+        verticalArrangement = Arrangement.SpaceBetween,
     ) {
 
         mName?.let {

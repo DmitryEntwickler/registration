@@ -7,5 +7,6 @@
     <string name="email">Email</string>
     <string name="registrate">Registrieren</string>
     <string name="topAppBarText">Registrierung</string>
+    <string name="allUsers">Alle Benutzer in der DB</string>
 
 </resources>
