@@ -11,7 +11,21 @@ class RegistrationScreenViewModel: ViewModel() {
     val mCity = MutableLiveData("")
     val mEmail = MutableLiveData("")
 
+    fun isFormularReady(): Boolean {
+        if (
+            mName.value.isNullOrBlank() ||
+            mSurname.value.isNullOrEmpty() ||
+            mAdress.value.isNullOrEmpty() ||
+            mCity.value.isNullOrEmpty() ||
+            mEmail.value.isNullOrEmpty()
+        ) {
+            println("-> not ok")
+            return false
+        }
+        else {
+            println("-> ok")
+            return true
+        }
 
-
-
+    }
 }

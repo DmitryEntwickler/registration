@@ -132,12 +132,7 @@ fun RegistrationScreenComposable(mRegistrationScreenViewModel: RegistrationScree
                 .fillMaxWidth()
                 .padding(horizontal = 8.dp, vertical = 24.dp),
             onClick = {
-                /*
-                if (mPlayerName.isNotEmpty()) {
-                    mAdPlayerViewModel.saveNewPlayer(mPlayerName)
-                }
-
-                 */
+                mRegistrationScreenViewModel.isFormularReady()
             }
         ) {
             Row(horizontalArrangement = Arrangement.Center) {
