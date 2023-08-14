@@ -7,7 +7,6 @@ import kotlinx.coroutines.launch
 class HomeScreenViewModel: ViewModel() {
 
     val mKrimiRepository = KrimiRepository()
-
     val mListOfKrimiAuthorDTO = mKrimiRepository.mListOfKrimiAuthorsDTO
 
     init {

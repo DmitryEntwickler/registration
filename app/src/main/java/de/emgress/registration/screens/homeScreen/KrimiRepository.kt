@@ -27,9 +27,11 @@ class KrimiRepository {
     }
     suspend fun fetchAllKrimiAuthors() {
         withContext(Dispatchers.IO) {
-            val responseKrimiAuthors: List<KrimiAuthorDTO> = mHttpClient.get(mApiKrimiAuthors).body()
-            withContext(Dispatchers.Main) {
-                mListOfKrimiAuthorsDTO.value = responseKrimiAuthors
+            val result = kotlin.runCatching {
+                val responseKrimiAuthors: List<KrimiAuthorDTO> = mHttpClient.get(mApiKrimiAuthors).body()
+                withContext(Dispatchers.Main) {
+                    mListOfKrimiAuthorsDTO.value = responseKrimiAuthors
+                }
             }
         }
     }

@@ -11,5 +11,6 @@
     <string name="welcome">Willkommen in der App</string>
     <string name="formularErrorMessage">Bitte vervollständigen Sie die Daten</string>
     <string name="formularErrorTitle">Achtung</string>
+    <string name="krimiTitle">Online Datenbank der Krimiautoren</string>
 
 </resources>
