@@ -6,7 +6,7 @@ import de.emgress.registration.database.tables.UserEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class DBRepository {
+class DataBaseRepository {
     suspend fun saveNewUser(user: UserEntity) {
         withContext(Dispatchers.IO) {
             Main.INSTANCE.mDB.userDao().insert(user)

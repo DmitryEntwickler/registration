@@ -1,13 +1,13 @@
 package de.emgress.registration
 
 import android.app.Application
-import de.emgress.registration.database.DBRepository
+import de.emgress.registration.database.DataBaseRepository
 import de.emgress.registration.database.DataBase
 
 class Main: Application() {
 
     val mDB by lazy { DataBase.initDB(this)}
-    val mDBRepository by lazy { DBRepository() }
+    val mDataBaseRepository by lazy { DataBaseRepository() }
 
     companion object {
         lateinit var INSTANCE: Main

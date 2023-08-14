@@ -2,8 +2,15 @@ package de.emgress.registration.screens.registrationScreen
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.viewmodel.compose.viewModel
+import de.emgress.registration.database.DataBaseRepository
+import de.emgress.registration.database.tables.UserEntity
+import kotlinx.coroutines.launch
 
 class RegistrationScreenViewModel: ViewModel() {
+
+    val mDataBaseDBRepository = DataBaseRepository()
 
     val mName = MutableLiveData("")
     val mSurname = MutableLiveData("")
@@ -24,8 +31,24 @@ class RegistrationScreenViewModel: ViewModel() {
         }
         else {
             println("-> ok")
+            saveNewUser()
             return true
         }
+    }
 
+    private fun saveNewUser() {
+        println("-> saving")
+        viewModelScope.launch {
+            mDataBaseDBRepository.saveNewUser(
+                UserEntity(
+                    mName = mName.value,
+                    mSurname = mSurname.value,
+                    mAdress = mAdress.value,
+                    mCity = mCity.value,
+                    mEmail = mEmail.value
+                )
+            )
+        }
+        println("-> save ok")
     }
 }
