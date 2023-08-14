@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">registration</string>
+    <string name="name">Vorname</string>
+    <string name="surname">Nachname</string>
+    <string name="adress">Adresse</string>
+    <string name="city">Wohnort</string>
+    <string name="email">Email</string>
+    <string name="registrate">Registrieren</string>
+
 </resources>
