@@ -19,6 +19,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.ExperimentalComposeUiApi
@@ -28,13 +29,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavController
 import de.emgress.registration.R
 
 @OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
 @Composable
-fun RegistrationScreenComposable(mRegistrationScreenViewModel: RegistrationScreenViewModel = viewModel()) {
+fun RegistrationScreenComposable(
+    mRegistrationScreenViewModel: RegistrationScreenViewModel = viewModel(),
+    mNavController: NavController
+) {
 
     val mKeyboardController = LocalSoftwareKeyboardController.current
+    val mScrollState = rememberScrollState()
 
     val mName by mRegistrationScreenViewModel.mName.observeAsState()
     val mSurname by mRegistrationScreenViewModel.mSurname.observeAsState()
@@ -42,10 +48,10 @@ fun RegistrationScreenComposable(mRegistrationScreenViewModel: RegistrationScree
     val mCity by mRegistrationScreenViewModel.mCity.observeAsState()
     val mEmail by mRegistrationScreenViewModel.mEmail.observeAsState()
 
-    val mScrollState = rememberScrollState()
-
     Column(
-        modifier = Modifier.fillMaxSize().verticalScroll(mScrollState),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(mScrollState),
         verticalArrangement = Arrangement.SpaceBetween,
     ) {
 

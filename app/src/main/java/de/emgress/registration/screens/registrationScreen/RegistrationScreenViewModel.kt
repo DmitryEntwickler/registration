@@ -3,7 +3,6 @@ package de.emgress.registration.screens.registrationScreen
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.compose.viewModel
 import de.emgress.registration.database.DataBaseRepository
 import de.emgress.registration.database.tables.UserEntity
 import kotlinx.coroutines.launch

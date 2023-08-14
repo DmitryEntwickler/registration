@@ -7,7 +7,7 @@ import androidx.room.Query
 import de.emgress.registration.database.tables.UserEntity
 
 @Dao
-interface UserDao {
+interface UserDAO {
     @Query("SELECT * FROM user_table")
     fun getAllLive(): LiveData<List<UserEntity>>
 

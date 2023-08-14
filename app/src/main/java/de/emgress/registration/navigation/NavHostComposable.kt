@@ -16,8 +16,10 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import de.emgress.registration.R
 import de.emgress.registration.commonComposables.TopAppBarComposable
+import de.emgress.registration.screens.homeScreen.HomeScreenComposable
 import de.emgress.registration.screens.myDataScreen.MyDataScreenComposable
 import de.emgress.registration.screens.registrationScreen.RegistrationScreenComposable
+import de.emgress.registration.screens.startScreen.StartScreenComposable
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,31 +29,31 @@ fun NavHostComposable(){
     val mIsTopAppBarVisible = remember { mutableStateOf(true) }
 
     Scaffold(
-        topBar = { if (mIsTopAppBarVisible.value)TopAppBarComposable() },
+        topBar = { if (mIsTopAppBarVisible.value) TopAppBarComposable() },
         bottomBar = { BottomNavigationComposable(mNavController = mNavController)}
     ) { innerPaddingValues ->
         NavHost(
             navController = mNavController,
-            startDestination = "registrationScreen",
+            startDestination = "startScreen",
             modifier = Modifier.padding(innerPaddingValues)
         ){
-            composable("registrationScreen") {
-                mIsTopAppBarVisible.value = true
-                RegistrationScreenComposable()
+            composable("startScreen") {
+                mIsTopAppBarVisible.value = false
+                StartScreenComposable(mNavController = mNavController)
+            }
+            composable("homeScreen") {
+                mIsTopAppBarVisible.value = false
+                HomeScreenComposable()
             }
             composable("myDataScreen") {
                 mIsTopAppBarVisible.value = false
                 MyDataScreenComposable()
             }
+            composable("registrationScreen") {
+                mIsTopAppBarVisible.value = true
+                RegistrationScreenComposable(mNavController = mNavController)
+            }
 
         }
     }
 }
-
-/*
-            composable(
-                route = "productDetailScreen/{id}",
-                arguments = listOf(navArgument("id") { type = NavType.IntType })
-            ) { ProductDetailComposable() }
-
-             */

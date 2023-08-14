@@ -19,13 +19,13 @@ fun BottomNavigationComposable(mNavController: NavController) {
     BottomAppBar() {
         NavigationBarItem(
             icon = { Icon(imageVector = Icons.Default.Home,"") },
-            label = { Text(text = "Log In") },
-            selected = (mActualRoute == "registrationScreen"),
-            onClick = { mNavController.navigate("registrationScreen") }
+            label = { Text(text = "Home") },
+            selected = (mActualRoute == "homeScreen"),
+            onClick = { mNavController.navigate("homeScreen") }
         )
         NavigationBarItem(
             icon = { Icon(imageVector = Icons.Default.Person,"") },
-            label = { Text(text = "Users") },
+            label = { Text(text = "Konto") },
             selected = (mActualRoute == "myDataScreen"),
             onClick = { mNavController.navigate("myDataScreen") }
         )
