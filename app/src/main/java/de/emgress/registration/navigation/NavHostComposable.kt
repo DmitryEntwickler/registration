@@ -27,10 +27,11 @@ fun NavHostComposable(){
 
     val mNavController = rememberNavController()
     val mIsTopAppBarVisible = remember { mutableStateOf(true) }
+    val mIsBottomNavigationVisible = remember { mutableStateOf(true) }
 
     Scaffold(
         topBar = { if (mIsTopAppBarVisible.value) TopAppBarComposable() },
-        bottomBar = { BottomNavigationComposable(mNavController = mNavController)}
+        bottomBar = { if (mIsBottomNavigationVisible.value) BottomNavigationComposable(mNavController = mNavController)}
     ) { innerPaddingValues ->
         NavHost(
             navController = mNavController,
@@ -39,18 +40,22 @@ fun NavHostComposable(){
         ){
             composable("startScreen") {
                 mIsTopAppBarVisible.value = false
+                mIsBottomNavigationVisible.value = false
                 StartScreenComposable(mNavController = mNavController)
             }
             composable("homeScreen") {
                 mIsTopAppBarVisible.value = false
+                mIsBottomNavigationVisible.value = true
                 HomeScreenComposable()
             }
             composable("myDataScreen") {
                 mIsTopAppBarVisible.value = false
+                mIsBottomNavigationVisible.value = true
                 MyDataScreenComposable()
             }
             composable("registrationScreen") {
                 mIsTopAppBarVisible.value = true
+                mIsBottomNavigationVisible.value = false
                 RegistrationScreenComposable(mNavController = mNavController)
             }
 
