@@ -1,6 +1,6 @@
 package de.emgress.registration.screens.homeScreen
 
-import de.emgress.registration.screens.registrationScreen.RegistrationScreenViewModel
+import kotlinx.coroutines.runBlocking
 import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Test
@@ -15,7 +15,10 @@ class KrimiRepositoryTest{
     }
 
     @Test
-    fun checkFormularIsReady(){
-
+    fun test_fetchData_bad_api(){
+        mUUT.mApiKrimiAuthors = "http://jkap.eu/api/api_bad.php"
+        runBlocking {
+            assertTrue("API is nicht korrekt, aber Result ist Success", mUUT.fetchAllKrimiAuthors().isFailure)
+        }
     }
 }

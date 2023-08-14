@@ -14,7 +14,7 @@ import kotlinx.serialization.json.Json
 
 class KrimiRepository {
 
-    val mApiKrimiAuthors = "http://jkap.eu/api/api_db_krimi.php"
+    var mApiKrimiAuthors = "http://jkap.eu/api/api_db_krimi.php"
     val mListOfKrimiAuthorsDTO: MutableLiveData<List<KrimiAuthorDTO>> = MutableLiveData()
 
     private val mHttpClient = HttpClient(CIO) {
@@ -25,13 +25,14 @@ class KrimiRepository {
             })
         }
     }
-    suspend fun fetchAllKrimiAuthors() {
-        withContext(Dispatchers.IO) {
-            val result = kotlin.runCatching {
+    suspend fun fetchAllKrimiAuthors(): Result<List<KrimiAuthorDTO>> {
+        return kotlin.runCatching {
+            withContext(Dispatchers.IO) {
                 val responseKrimiAuthors: List<KrimiAuthorDTO> = mHttpClient.get(mApiKrimiAuthors).body()
                 withContext(Dispatchers.Main) {
                     mListOfKrimiAuthorsDTO.value = responseKrimiAuthors
                 }
+                responseKrimiAuthors // Rückgabe des Ergebnisses
             }
         }
     }
